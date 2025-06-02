@@ -1,10 +1,17 @@
-// components/Sidebar.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Menu } from 'lucide-react'; // Menu icon (hamburger)
 
-const Sidebar = () => {
+const Sidebar = ({ toggleSidebar }) => {
   return (
     <div style={styles.sidebar}>
+      {/* Menu Button inside Sidebar */}
+      <div style={styles.menuWrapper}>
+        <button onClick={toggleSidebar} style={styles.menuButton}>
+          <Menu color="#fff" size={28} />
+        </button>
+      </div>
+
       <h2 style={styles.title}>ChatGuru</h2>
       <nav>
         <ul style={styles.navList}>
@@ -62,8 +69,20 @@ const styles = {
     color: '#fff',
     padding: '20px',
     boxSizing: 'border-box',
+    position: 'relative',
+  },
+  menuWrapper: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+  },
+  menuButton: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
   },
   title: {
+    marginTop: '50px',
     marginBottom: '40px',
   },
   navList: {
@@ -82,7 +101,7 @@ const styles = {
     display: 'block',
     padding: '10px 15px',
     color: '#fff',
-    backgroundColor: '#3B82F6', // blue highlight
+    backgroundColor: '#3B82F6',
     textDecoration: 'none',
     marginBottom: '15px',
     borderRadius: '5px',
