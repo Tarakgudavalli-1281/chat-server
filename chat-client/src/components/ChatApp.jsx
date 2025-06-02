@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './SideBar';
 
-// Dummy components for pages
+// Dummy components for pages\
 const Chats = () => <div>Chats Page</div>;
 const Groups = () => <div>Groups Page</div>;
 const Status = () => <div>Status Page</div>;

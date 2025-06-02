@@ -1,11 +1,9 @@
-// App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/SideBar';
 import { Menu } from 'lucide-react';
-import HomePage from './pages/HomePage.jsx'; // ✅ Make sure the filename matches!
+import HomePage from './pages/HomePage';
 
-const Chats = () => <div style={{ padding: 20 }}>This is the Chats page</div>;
 const Groups = () => <div style={{ padding: 20 }}>This is the Groups page</div>;
 const Status = () => <div style={{ padding: 20 }}>This is the Status page</div>;
 const Calls = () => <div style={{ padding: 20 }}>This is the Calls page</div>;
@@ -20,7 +18,7 @@ const App = () => {
         {/* Sidebar */}
         {sidebarOpen && <Sidebar toggleSidebar={() => setSidebarOpen(false)} />}
 
-        {/* Menu Button if sidebar is closed */}
+        {/* Menu Button if sidebar is hidden */}
         {!sidebarOpen && (
           <button
             onClick={() => setSidebarOpen(true)}
@@ -44,13 +42,13 @@ const App = () => {
         {/* Main Content */}
         <div style={{ flex: 1, background: '#f0f2f5' }}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/chats" element={<Chats />} />
+            <Route path="/chats" element={<HomePage />} />
             <Route path="/groups" element={<Groups />} />
             <Route path="/status" element={<Status />} />
             <Route path="/calls" element={<Calls />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/" element={<Navigate to="/chats" replace />} />
+            <Route path="*" element={<Navigate to="/chats" replace />} />
           </Routes>
         </div>
       </div>
