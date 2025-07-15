@@ -1,16 +1,23 @@
+// App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/SideBar';
 import { Menu } from 'lucide-react';
 import HomePage from './pages/HomePage';
+import StatusPage from './pages/StatusPage';
+import StatusUpload from './pages/StatusUpload';
 
 const Groups = () => <div style={{ padding: 20 }}>This is the Groups page</div>;
-const Status = () => <div style={{ padding: 20 }}>This is the Status page</div>;
 const Calls = () => <div style={{ padding: 20 }}>This is the Calls page</div>;
 const Settings = () => <div style={{ padding: 20 }}>This is the Settings page</div>;
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [statuses, setStatuses] = useState([]);
+
+  const addStatus = (newStatus) => {
+    setStatuses((prev) => [newStatus, ...prev]);
+  };
 
   return (
     <BrowserRouter>
@@ -18,7 +25,7 @@ const App = () => {
         {/* Sidebar */}
         {sidebarOpen && <Sidebar toggleSidebar={() => setSidebarOpen(false)} />}
 
-        {/* Menu Button if sidebar is hidden */}
+        {/* Menu Button */}
         {!sidebarOpen && (
           <button
             onClick={() => setSidebarOpen(true)}
@@ -40,15 +47,15 @@ const App = () => {
         )}
 
         {/* Main Content */}
-        <div style={{ flex: 1, background: '#f0f2f5' }}>
+        <div style={{ flex: 1, background: '#f0f2f5', overflowY: 'auto' }}>
           <Routes>
             <Route path="/chats" element={<HomePage />} />
             <Route path="/groups" element={<Groups />} />
-            <Route path="/status" element={<Status />} />
             <Route path="/calls" element={<Calls />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/status" element={<StatusPage statuses={statuses} />} />
+            <Route path="/status/upload" element={<StatusUpload addStatus={addStatus} />} />
             <Route path="/" element={<Navigate to="/chats" replace />} />
-            <Route path="*" element={<Navigate to="/chats" replace />} />
           </Routes>
         </div>
       </div>

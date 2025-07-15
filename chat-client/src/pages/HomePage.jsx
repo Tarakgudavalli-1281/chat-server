@@ -4,10 +4,10 @@ import { FiSearch, FiMoreVertical, FiVideo, FiPhone } from 'react-icons/fi';
 import { BsFillChatDotsFill } from 'react-icons/bs';
 
 const contactList = [
-  { name: 'MONKEY D LUFFY 🐒☠️', msg: 'https://youtube.com...', time: '29-05-2025' },
-  { name: 'Rupak', msg: 'Can You Give the navbar...', time: '17:34' },
-  { name: 'Nanna💕', msg: 'https://youtube.com/shorts/abc', time: '13:22' },
-  { name: 'Minecraft', msg: 'You: Sticker', time: 'Yesterday' },
+  { name: 'user1', msg: 'hii this is chat guru', time: '29-05-2025' },
+  { name: 'user2', msg: 'hii this is chat guru', time: '17:34' },
+  { name: 'user3', msg: 'hii this is chat guru', time: '13:22' },
+  { name: 'user4', msg: 'hii this is chat guru', time: 'Yesterday' },
 ];
 
 const HomePage = () => {
